@@ -20,7 +20,7 @@ order_filter_str = json.dumps(order_filter)
 order_filter_encoded = urllib.parse.quote(order_filter_str)
 
 # Get the data for the selected order
-result = requests.get((spire_api_order_endpoint + "?filter=" + order_filter_encoded), auth=HTTPBasicAuth('APIUser', 'SpireAPI123!'))
+result = requests.get((spire_api_order_endpoint + "?filter=" + order_filter_encoded), auth=HTTPBasicAuth(user, password))
 
 # Return the data for the selected order
 order_data = result.content.decode()
@@ -35,7 +35,7 @@ if(order_data_json['count'] != 1):
 order_id = order_data_json['records'][0]['id']
 
 # Get the full order record from the order record endpoint
-result_record = requests.get(spire_api_order_endpoint + str(order_id), auth=HTTPBasicAuth('APIUser', 'SpireAPI123!'))
+result_record = requests.get(spire_api_order_endpoint + str(order_id), auth=HTTPBasicAuth(user, password))
 result_record_json = json.loads(result_record.content.decode())
 
 print(f"[+] Success receiving data for OrderNo: {order_to_ship}")
@@ -53,7 +53,7 @@ if(count > 0):
     print("[+] Updated some of the line items for this order to be fully shipped")
 
     # Send updated record back into Spire
-    put_result = requests.put(spire_api_order_endpoint + str(order_id), json=result_record_json, auth=HTTPBasicAuth('APIUser', 'SpireAPI123!'))
+    put_result = requests.put(spire_api_order_endpoint + str(order_id), json=result_record_json, auth=HTTPBasicAuth(user, password))
 
     # If the result of sending the record back is status code 200 then we are successful
     if(put_result.status_code == 200):
@@ -63,7 +63,7 @@ if(count > 0):
 
         # invoice the order
         spire_api_invoice_order_endpoint = spire_api_order_endpoint + str(order_id) + "/invoice"
-        invoice_result = requests.post(spire_api_invoice_order_endpoint, auth=HTTPBasicAuth('APIUser', 'SpireAPI123!'))
+        invoice_result = requests.post(spire_api_invoice_order_endpoint, auth=HTTPBasicAuth(user, password))
 
         # Check the result of requesting to invoice the order
         if (invoice_result.status_code == 200):
