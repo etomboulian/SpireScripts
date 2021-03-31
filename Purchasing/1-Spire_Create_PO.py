@@ -4,13 +4,14 @@ import urllib
 from requests.auth import HTTPBasicAuth
 
 # Define some control variables
-spire_host = "calm-scene-7886.spirelan.com"
+spire_host = "better-snow-2961.spirelan.com"
 spire_port = "10880"
-company_name = "Inspire"
+company_name = "inspire"
 user = "APIUser"
 password = "SpireAPI123!"
 spire_api_purchase_order_endpoint = f"https://{spire_host}:{spire_port}/api/v2/companies/{company_name}/purchasing/orders/" 
 
+# Sample Purchase Order JSON
 sample_po = """
 {
   "trackingNo": "My tracking number",
@@ -46,10 +47,13 @@ sample_po_json = json.loads(sample_po)
 # Post the PO at the purchase order API enpoint
 po_create_response = requests.post(spire_api_purchase_order_endpoint, json=sample_po_json, auth=HTTPBasicAuth(user, password))
 
-if (po_create_response.status_code == 201):
-    print("PO created successfully!")
-    print(po_create_response.text)
-else:
+# If we didn't get a successful result message print out what we received
+if (po_create_response.status_code != 201):
     print("Not sure what happened here ...")
     print("Status Code: " + str(po_create_response.status_code))
     print("Response Msg: " + po_create_response.text)
+
+# Otherwise the PO was created successfully
+print("PO created successfully!")
+print(po_create_response.text)
+    

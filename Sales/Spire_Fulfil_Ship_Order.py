@@ -7,9 +7,9 @@ from requests.auth import HTTPBasicAuth
 order_to_ship = "0000800085"
 
 # Define some control variables
-spire_host = "calm-scene-7886.spirelan.com"
+spire_host = "better-snow-2961.spirelan.com"
 spire_port = "10880"
-company_name = "Inspire"
+company_name = "inspire"
 user = "APIUser"
 password = "SpireAPI123!"
 spire_api_order_endpoint = f"https://{spire_host}:{spire_port}/api/v2/companies/{company_name}/sales/orders/" 
