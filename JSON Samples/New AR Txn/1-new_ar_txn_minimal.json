@@ -1,0 +1,11 @@
+{
+    "customer":{
+        "code":"CROP895"
+    },
+    "date":"2021-02-03",
+    "transType":"I",
+    "debitAmt":"2287.12",
+    "dueDate":"2021-02-03",
+    "referenceNo":"0000600000",
+    "customerPO":"43576"
+}
