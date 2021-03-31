@@ -1,0 +1,14 @@
+{
+    "vendor":{
+        "code":"MOESYS"
+    },
+    "date":"2015-07-30",
+    "transType":"I",
+    "transNo":"0000000240",
+    "referenceNo":"23345565",
+    "purchaseNo":"0000700001",
+    "debitAmt":"0",
+    "creditAmt":"25289.4",
+    "termsCode":"",
+    "freight":null
+}

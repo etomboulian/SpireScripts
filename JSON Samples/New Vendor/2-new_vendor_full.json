@@ -1,0 +1,49 @@
+{
+    "vendorNo":"ACME",
+    "code":"ACME",
+    "name":"ACME Systems Inc",
+    "hold":false,
+    "status":"A",
+    "currency":"",
+    "accountNo":"",
+    "buyer":"",
+    "note":"",
+    "reference":"",
+    "foregroundColor":0,
+    "backgroundColor":16777215,
+    "creditLimit":"0",
+    "paymentTerms":{
+        "code":null,
+        "description":null
+    },
+    "address":{
+        "line1":"500 - 44882 Saperton St",
+        "line2":"",
+        "line3":"",
+        "line4":"",
+        "city":"Port Moody",
+        "postalCode":"V5T 5Y6",
+        "provState":"BC",
+        "country":"CAN",
+        "phone":{
+            "number":"6045557892",
+            "format":1
+        },
+        "fax":{
+            "number":"",
+            "format":1
+        },
+        "contacts":[
+            {
+                "name":"Bill Jonder"
+            },
+            {
+                "name":""
+            },
+            {
+                "name":""
+            }
+        ],
+        "email":"bjonder@acmesys.ne"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "customer":{
+        "code":"CROP895"
+    },
+    "date":"2021-02-03",
+    "linkDate":"2021-02-03",
+    "transType":"I",
+    "transNo":"0000000002",
+    "refNo":"0000600000",
+    "debitAmt":"2287.12",
+    "creditAmt":"0",
+    "linkBalance":"0",
+    "termsCode":"",
+    "dueDate":"2021-02-03",
+    "referenceNo":"0000600000",
+    "customerPO":"43576"
+}
