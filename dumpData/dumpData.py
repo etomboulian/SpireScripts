@@ -2,13 +2,13 @@ import requests
 from requests.auth import HTTPBasicAuth
 import json
 
-servername = "calm-scene-7886.spirelan.com" # use the valid SSL hostname here
-port = 10880                                # On premesis Spire: 10880; Cloud: 443
-companyName = 'inspire2021'                 # Company Name to call data from
-username = 'evan'                           # Login Username
-password = 'etomboulian'                    # Login Password
+servername = "better-snow-2961.spirelan.com"    # use the valid SSL hostname here
+port = 10880                                    # On premesis Spire: 10880; Cloud: 443
+companyName = 'inspire2021'                     # Company Name to call data from
+username = 'ApiUser'                            # Login Username
+password = 'Spire123!'                          # Login Password
 
-pageSize = 100                              # page size to call records in batches of
+pageSize = 1000                                 # page size to call records in batches of
 
 class SpireData:
     def __init__(self, type, filters = '') -> None:
@@ -22,6 +22,8 @@ class SpireData:
             self.endpoint = 'sales/invoices'
         elif (type == 'inventory'):
             self.endpoint = 'inventory/items'
+        elif (type == 'inventoryMovement'):
+            self.endpoint = 'inventory/movement'
         
         # Create the API endpoint url from the provided data
         self.baseUrl = f'https://{servername}:{port}/api/v2/companies/{companyName}/{self.endpoint}'
@@ -47,9 +49,10 @@ class SpireData:
         try:
             response = requests.get(self.baseUrl, auth=self.credentials).json()
         except:
+            print(self.baseUrl)
             print(requests.get(self.baseUrl, auth=self.credentials))
             raise Exception("unable to get data from Spire API")
-
+        
         return response['count']
 
     # Function to get all records and write them out to a JSON file
@@ -79,8 +82,18 @@ class SpireData:
         file.close()
         
 def main():
-    spireData = SpireData('invoices')
-    spireData.writeAllRecordsToJsonArrayFile('invoices.json')
+    ## Set the type of output that you want here
+    '''
+    Options:
+        -orders
+        -invoices
+        -inventory
+        -inventoryMovement
+    '''
+    spireData = SpireData('inventoryMovement')
+
+    ## Set the location of the output file that you wish to write to here
+    spireData.writeAllRecordsToJsonArrayFile('movement.json')
     print('Done')
     exit(0)
 
